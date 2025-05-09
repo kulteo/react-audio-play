@@ -1,7 +1,7 @@
 {
-  "name": "react-audio-play",
+  "name": "@kulteo/react-audio-play",
   "version": "1.1.0",
-  "description": "React audio player component",
+  "description": "React Audio Player component forked and customized for Kulteo",
   "homepage": "https://riyaddecoder.github.io/react-audio-play/",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -65,6 +65,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/riyaddecoder/react-audio-play"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": ">=17"

@@ -426,11 +426,11 @@ export const AudioPlayer = forwardRef<AudioPlayerRef | undefined, AudioInterface
           {totalTime !== '--:--' && <span className="rap-total-time">{totalTime}</span>}
         </div>
 
-        {volumePlacement !== 'none' &&
-          (<div className="rap-volume">
+        {volumePlacement !== 'none' && (
+          <div className="rap-volume">
             <div className={`rap-volume-btn ${volumeOpen ? 'rap-volume-open' : ''}`} onClick={() => setVolumeOpen((vol) => !vol)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill={volumeOpen ? sliderColor ?? '#007FFF' : color ?? '#566574'} fillRule="evenodd" d={speakerIcon} />
+                <path fill={volumeOpen ? (sliderColor ?? '#007FFF') : (color ?? '#566574')} fillRule="evenodd" d={speakerIcon} />
               </svg>
             </div>
             <div className={`${volumePlacement === 'bottom' ? 'rap-vol-placement-bottom' : 'rap-vol-placement-top'} ${!volumeOpen ? 'rap-hidden' : ''}`}>
@@ -462,8 +462,8 @@ export const AudioPlayer = forwardRef<AudioPlayerRef | undefined, AudioInterface
               </div>
               <div className="rap-backdrop" onClick={() => setVolumeOpen(false)}></div>
             </div>
-          </div>)
-        }
+          </div>
+        )}
 
         <audio
           loop={loop}
