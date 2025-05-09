@@ -12,6 +12,7 @@
     "README.md"
   ],
   "scripts": {
+    "dev": "rollup -c --bundleConfigAsCjs --watch",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run prettier && npm run lint",
     "build": "rollup -c --bundleConfigAsCjs",

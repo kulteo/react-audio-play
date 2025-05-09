@@ -10,7 +10,7 @@ export interface AudioInterface {
   style?: React.CSSProperties;
   sliderColor?: string;
   volume?: number;
-  volumePlacement?: 'top' | 'bottom';
+  volumePlacement?: 'top' | 'bottom' | 'none';
   hasKeyBindings?: boolean;
   onPlay?: () => void;
   onPause?: () => void;
