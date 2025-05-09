@@ -426,42 +426,44 @@ export const AudioPlayer = forwardRef<AudioPlayerRef | undefined, AudioInterface
           {totalTime !== '--:--' && <span className="rap-total-time">{totalTime}</span>}
         </div>
 
-        <div className="rap-volume">
-          <div className={`rap-volume-btn ${volumeOpen ? 'rap-volume-open' : ''}`} onClick={() => setVolumeOpen((vol) => !vol)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path fill={volumeOpen ? sliderColor ?? '#007FFF' : color ?? '#566574'} fillRule="evenodd" d={speakerIcon} />
-            </svg>
-          </div>
-          <div className={`${volumePlacement === 'bottom' ? 'rap-vol-placement-bottom' : 'rap-vol-placement-top'} ${!volumeOpen ? 'rap-hidden' : ''}`}>
-            <div
-              className={`rap-volume-controls`}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
-            >
-              <div className="rap-slider" data-direction="vertical" onClick={changeVolume} onMouseDown={handleVolumeDragging} onTouchStart={handleVolumeDragging}>
-                <div
-                  className="rap-progress"
-                  style={{
-                    ...{ height: `${volumeProgress}%` },
-                    ...(sliderColor ? { backgroundColor: sliderColor } : {})
-                  }}
-                >
+        {volumePlacement !== 'none' &&
+          (<div className="rap-volume">
+            <div className={`rap-volume-btn ${volumeOpen ? 'rap-volume-open' : ''}`} onClick={() => setVolumeOpen((vol) => !vol)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill={volumeOpen ? sliderColor ?? '#007FFF' : color ?? '#566574'} fillRule="evenodd" d={speakerIcon} />
+              </svg>
+            </div>
+            <div className={`${volumePlacement === 'bottom' ? 'rap-vol-placement-bottom' : 'rap-vol-placement-top'} ${!volumeOpen ? 'rap-hidden' : ''}`}>
+              <div
+                className={`rap-volume-controls`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+              >
+                <div className="rap-slider" data-direction="vertical" onClick={changeVolume} onMouseDown={handleVolumeDragging} onTouchStart={handleVolumeDragging}>
                   <div
-                    ref={volumePin}
-                    className="rap-pin"
-                    data-method="changeVolume"
-                    style={sliderColor ? { backgroundColor: sliderColor } : {}}
-                    onMouseDown={handleVolumeDragging}
-                    onTouchStart={handleVolumeDragging}
-                  ></div>
+                    className="rap-progress"
+                    style={{
+                      ...{ height: `${volumeProgress}%` },
+                      ...(sliderColor ? { backgroundColor: sliderColor } : {})
+                    }}
+                  >
+                    <div
+                      ref={volumePin}
+                      className="rap-pin"
+                      data-method="changeVolume"
+                      style={sliderColor ? { backgroundColor: sliderColor } : {}}
+                      onMouseDown={handleVolumeDragging}
+                      onTouchStart={handleVolumeDragging}
+                    ></div>
+                  </div>
                 </div>
               </div>
+              <div className="rap-backdrop" onClick={() => setVolumeOpen(false)}></div>
             </div>
-            <div className="rap-backdrop" onClick={() => setVolumeOpen(false)}></div>
-          </div>
-        </div>
+          </div>)
+        }
 
         <audio
           loop={loop}
